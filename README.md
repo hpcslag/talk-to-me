@@ -1,2 +1,22 @@
 # talk-to-me
-use web rtc api send Camera and Sound stream to your friends! Application based on Node.js
+use web rtc api send Camera and Sound stream to your friends! Application based on Node.js(Express and Socket.io)
+
+##API
+#####Initialization 
+```javascript
+  var stream = require('talktome').getStream();
+```
+#####Get Camera/Audio buffer stream
+```javascript
+stream.RTCIO().camera;
+stream.RTCIO().audio;
+```
+
+#####Javascript in HTML(front website)
+Parse buffer stream
+```html
+<script src="./weblob.js"></script>
+```
+```javascript
+//create Blob Object
+```
