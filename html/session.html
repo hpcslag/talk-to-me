@@ -100,21 +100,65 @@
         overflow-x: hidden;
     }
     #chat {
-        height: 250px;
+        height: 150px;
         /*overflow-y: scroll;*/
         
         overflow-x: hidden;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        padding-bottom: 5px;
+        font-family: Open Sans;
+    }
+    #you{
+        font-weight: bold;
+        font-family: Open Sans;
+        color: red;
+    }
+    #caller{
+        font-weight: bold;
+        font-family: Open Sans;
+        color: green;
+    }
+    #myvideo{
+        width: 320px;
+        height: 150px;
+
+        position: relative;
     }
     </style>
     <video autoplay poster="" id="bgvid" loop>
         <!--  <source id="source" src="" type="video/mp4"> -->
     </video>
     <div id="polina">
-        <h1>MY VIDEO</h1>
+        <h1><video autoplay poster="" id="myvideo" loop></video></h1>
         <p>Connected in 11:11pm
             <p><a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">Mute</a>  <a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">Stop</a>
                 <div id="chat">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor. Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor. Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor. Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.
+                    <ul id="chat_list">
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                        <li><span id="you">You:</span> Hey,nice to meet you</li>
+                        <li><span id="caller">Caller:</span> nice to meet you,too</li>
+                    </ul>
                 </div>
                 <button>Pause</button>
     </div>
@@ -142,7 +186,17 @@
         });
     })(jQuery);
 
-    var video = document.getElementsByTagName("video")[0],
+    //streaming to your screen
+    var othervideo = document.getElementsByTagName('video')[0];
+        navigator.webkitGetUserMedia({
+            "video": true
+        }, function(stream) {
+            othervideo.src = window.URL.createObjectURL(stream);//webkitURL is deprecated. Please use URL instead
+            othervideo.play();
+        }, function(err){});
+
+    //this is you video screen
+    var video = document.getElementsByTagName("video")[1],
         videoObj = {
             "video": true
         },
