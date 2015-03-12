@@ -1,6 +1,8 @@
 # TALK TO ME
 use web rtc api send Camera and Sound stream to your friends! Application based on Node.js(Express and Socket.io)
 
+![Logo](http://i.imgur.com/3RjpHft.png)
+
 ##API
 #####Initialization 
 ```javascript
