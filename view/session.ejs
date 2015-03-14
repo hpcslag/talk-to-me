@@ -90,7 +90,7 @@
     </style>
 </head>
 
-<body>
+<body onload="init()" id="videos">
     <style scoped="" contenteditable="">
     /* For the "inset" look only */
     
@@ -122,10 +122,10 @@
         font-family: Open Sans;
         color: green;
     }
-    #myvideo{
+    #you{
         width: 320px;
         height: 150px;
-
+        z-index: 10000;
         position: relative;
     }
     </style>
@@ -133,9 +133,9 @@
         <!--  <source id="source" src="" type="video/mp4"> -->
     </video>
     <div id="polina">
-        <h1><video autoplay poster="" id="myvideo" loop></video></h1>
+        <h1><video id="you" autoplay poster="" id="myvideo" loop></video></h1>
         <p>Connected in 11:11pm
-            <p><a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">Mute</a>  <a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">Stop</a>
+            <p><a href="#">Mute</a>  <a href="#">Stop</a>
                 <div id="chat">
                     <ul id="chat_list">
                         <li><span id="you">You:</span> Hey,nice to meet you</li>
@@ -164,7 +164,8 @@
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/webrtc.io.js"></script>
-    <script>
+    <script src="/script.js"></script>
+    <script type="text/javascript">
     (function($) {
         $(window).load(function() {
             /* initialize scrollbar */
@@ -187,40 +188,6 @@
             }(document, "script", "twitter-wjs");
         });
     })(jQuery);
-
-    //streaming to your screen
-    rtc.createStream({"video": true, "audio":true},function(stream){
-        
-    });
-    rtc.connect('http://localhost:3000');
-    rtc.on('ready', function() {
-        // all streams are loaded
-    });
-
-    //this is you video screen
-    var video = document.getElementsByTagName("video")[1],
-        videoObj = {
-            "video": true
-        },
-        errBack = function(error) {
-            console.log("Video capture error: ", error.code);
-        };
-    if (navigator.getUserMedia) { // Standard
-        navigator.getUserMedia(videoObj, function(stream) {
-            video.src = stream;
-            video.play();
-        }, errBack);
-    } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
-        navigator.webkitGetUserMedia(videoObj, function(stream) {
-            video.src = window.URL.createObjectURL(stream);//webkitURL is deprecated. Please use URL instead
-            video.play();
-        }, errBack);
-    } else if (navigator.mozGetUserMedia) { // Firefox-prefixed
-        navigator.mozGetUserMedia(videoObj, function(stream) {
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        }, errBack);
-    }
     </script>
 </body>
 
